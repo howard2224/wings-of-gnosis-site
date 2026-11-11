@@ -231,7 +231,9 @@ footer .f-sub{color:var(--ash);font-size:.85rem;margin-top:8px;font-style:italic
   .cards-grid{grid-template-columns:repeat(2,1fr)}
   .three-col{grid-template-columns:1fr}
   .pairs{grid-template-columns:repeat(2,1fr)}
-  nav{display:none}
+  nav{display:flex;gap:16px}
+  nav a{display:none}
+  nav a[href="mobile-game.html"]{display:inline-block}
   header .btn{margin-left:auto}
 }
 @media (max-width:600px){
