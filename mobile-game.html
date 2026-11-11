@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wings of Gnosis — The Mobile Game</title>
+<meta name="description" content="The Wings of Gnosis mobile game: card duels, a living world, and the Way of Virtue in your pocket. Mobile game in development. A Follow Your Will project.">
+<style>
+:root{
+  --void:#05070D;
+  --panel:#0D1428;
+  --panel-raise:#131E38;
+  --hairline:#2A3A5F;
+  --parchment:#EDE6D6;
+  --ash:#9AA7C4;
+  --blue:#4DA3FF;
+  --blue-deep:#1D5FD1;
+  --blue-pale:#9FD0FF;
+  --gold:#E8B34B;
+  --gold-hi:#F6D47C;
+  --gold-deep:#9A6E1E;
+  --gold-frame:#6B5518;
+  --red:#C9332E;
+  --red-deep:#7E1F1C;
+  --entropy:#030408;
+  --violet:#7A3FF2;
+  --magenta:#D96BA0;
+  --earth:#86A860;
+  --earth-bg:#141F10;
+  --water:#35A3C0;
+  --water-bg:#0C1E28;
+  --fire:#E8722A;
+  --fire-bg:#221108;
+  --air:#B9AEE0;
+  --air-bg:#17142A;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:
+    radial-gradient(ellipse 80% 40% at 50% -5%, rgba(232,179,75,.05), transparent 70%),
+    radial-gradient(ellipse 60% 50% at 50% 45%, rgba(77,163,255,.04), transparent 70%),
+    var(--void);
+  color:var(--parchment);
+  font-family:'Spectral', Georgia, 'Times New Roman', serif;
+  font-size:1.05rem;
+  line-height:1.7;
+}
+h1,h2,h3,.cinzel{
+  font-family:'Cinzel', Georgia, 'Times New Roman', serif;
+  font-weight:700;
+}
+h2{font-size:clamp(2rem,4vw,3rem);line-height:1.15;letter-spacing:.02em;text-align:center}
+h3{font-size:1.25rem;letter-spacing:.06em}
+a{color:var(--blue-pale)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+section{padding:96px 0 8px}
+.eyebrow{
+  font-family:'Cinzel',serif;font-weight:600;text-transform:uppercase;
+  letter-spacing:.3em;font-size:.72rem;color:var(--gold);text-align:center;
+}
+.lede{max-width:760px;margin:22px auto 0;text-align:center;color:var(--parchment)}
+.lede.dim,.dim{color:var(--ash)}
+.divider{display:flex;align-items:center;gap:16px;max-width:1120px;margin:88px auto 0;padding:0 24px}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--hairline)}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;min-height:48px;
+  padding:14px 34px;border:1px solid var(--gold);border-radius:4px;
+  color:var(--gold-hi);text-decoration:none;
+  font-family:'Cinzel',serif;font-weight:600;text-transform:uppercase;
+  letter-spacing:.18em;font-size:.8rem;background:rgba(5,7,13,.45);
+  transition:background .25s,color .25s,box-shadow .25s;
+}
+.btn:hover{background:var(--gold);color:#05070D;box-shadow:0 0 28px rgba(232,179,75,.35)}
+/* ---------- Header ---------- */
+header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(5,7,13,.88);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--hairline);
+}
+.header-in{max-width:1120px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;gap:20px}
+.lockup{display:flex;align-items:center;gap:12px;text-decoration:none}
+.lockup .wm{font-family:'Cinzel',serif;font-weight:700;color:var(--parchment);letter-spacing:.14em;font-size:.95rem;line-height:1.2}
+.lockup .wm small{display:block;color:var(--gold);font-size:.58rem;letter-spacing:.3em;font-weight:600}
+nav{margin-left:auto;display:flex;gap:26px}
+nav a{
+  color:var(--ash);text-decoration:none;font-family:'Cinzel',serif;font-weight:600;
+  text-transform:uppercase;letter-spacing:.16em;font-size:.68rem;
+}
+nav a:hover{color:var(--gold-hi)}
+header .btn{min-height:40px;padding:9px 18px;font-size:.68rem;margin-left:8px}
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;padding:110px 0 130px;text-align:center;overflow:hidden;
+  background:
+    linear-gradient(to bottom, rgba(5,7,13,.62) 0%, rgba(5,7,13,.55) 45%, var(--void) 100%),
+    url('assets/archangel-awareness.jpg') center 30% / cover no-repeat;
+}
+.hero .eye-stage{position:relative;width:280px;margin:0 auto 10px}
+.hero .eye-glow{
+  position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 52%, rgba(77,163,255,.25), transparent 65%);
+}
+.hero h1{font-size:clamp(2.8rem,7vw,5.2rem);letter-spacing:.04em;line-height:1.05;position:relative}
+.hero h1 .gold{color:var(--gold)}
+.hero .questions{
+  font-style:italic;font-size:clamp(1.25rem,2.6vw,1.7rem);color:var(--parchment);
+  max-width:820px;margin:26px auto 0;line-height:1.5;
+}
+.hero .tagline{
+  font-style:italic;color:var(--gold-hi);font-size:1.15rem;margin-top:20px;
+}
+.hero .subhead{max-width:720px;margin:20px auto 0;color:#D8D2C2}
+.status-chip{
+  display:inline-block;margin-top:24px;padding:6px 18px;border:1px solid var(--hairline);
+  border-radius:999px;background:rgba(13,20,40,.75);color:var(--blue-pale);
+  font-family:'Cinzel',serif;font-weight:600;text-transform:uppercase;letter-spacing:.2em;font-size:.66rem;
+}
+.hero .btn{margin-top:34px;position:relative}
+.hero .btn:hover{box-shadow:0 0 28px rgba(232,179,75,.4),0 0 44px rgba(77,163,255,.25)}
+.scroll-cue{margin:44px auto 0;width:22px;color:var(--gold);opacity:.85}
+/* ---------- Generic blocks ---------- */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:1000px;margin:44px auto 0}
+.panel{background:var(--panel);border:1px solid var(--hairline);border-radius:10px;padding:34px}
+.panel h3{color:var(--gold-hi);margin-bottom:12px}
+.panel p+p{margin-top:14px}
+blockquote{
+  max-width:780px;margin:40px auto 0;padding:6px 0 6px 26px;
+  border-left:3px solid var(--gold);font-style:italic;font-size:1.3rem;line-height:1.55;
+}
+.center-col{max-width:800px;margin:0 auto}
+.center-col p+p{margin-top:16px}
+.section-intro{max-width:780px;margin:22px auto 0;text-align:center}
+/* ---------- Way of Virtue ---------- */
+.element-block{border:1px solid var(--hairline);border-radius:12px;margin-top:34px;overflow:hidden}
+.element-head{display:flex;align-items:center;gap:16px;padding:22px 28px;border-bottom:1px solid var(--hairline)}
+.element-head h3{font-size:1.5rem;letter-spacing:.1em}
+.element-head .el-icon{flex:none;display:flex}
+.element-body{padding:28px}
+.root-pair{
+  border:1px solid var(--hairline);border-radius:10px;padding:24px 26px;background:rgba(5,7,13,.35);
+}
+.root-pair .rp-names{font-family:'Cinzel',serif;font-weight:700;font-size:1.35rem;letter-spacing:.05em}
+.root-pair .rp-names .dist{color:var(--ash)}
+.root-pair p{margin-top:10px;color:#D8D2C2}
+.root-tag{
+  display:inline-block;margin-bottom:12px;padding:3px 12px;border-radius:999px;
+  font-family:'Cinzel',serif;font-weight:600;text-transform:uppercase;letter-spacing:.2em;font-size:.6rem;
+  border:1px solid var(--hairline);color:var(--ash);
+}
+.pairs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px;list-style:none}
+.pair{
+  background:var(--panel-raise);border:1px solid var(--hairline);border-radius:8px;
+  padding:16px 18px;display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;
+}
+.pair .virtue{font-family:'Cinzel',serif;font-weight:600;letter-spacing:.08em;font-size:.95rem;color:var(--parchment)}
+.pair .sep{color:var(--ash)}
+.pair .distortion{
+  font-family:'Cinzel',serif;font-weight:600;letter-spacing:.08em;font-size:.82rem;color:var(--ash);
+  background:var(--entropy);border:1px solid var(--hairline);border-radius:4px;padding:2px 9px;
+}
+.el-earth .element-head{background:var(--earth-bg)} .el-earth .el-icon{color:var(--earth)} .el-earth .root-pair{border-color:var(--earth)}
+.el-water .element-head{background:var(--water-bg)} .el-water .el-icon{color:var(--water)} .el-water .root-pair{border-color:var(--water)}
+.el-fire .element-head{background:var(--fire-bg)} .el-fire .el-icon{color:var(--fire)} .el-fire .root-pair{border-color:var(--fire)}
+.el-air .element-head{background:var(--air-bg)} .el-air .el-icon{color:var(--air)} .el-air .root-pair{border-color:var(--air)}
+.el-earth .element-body{background:repeating-linear-gradient(115deg, rgba(134,168,96,.04) 0 14px, transparent 14px 28px)}
+.el-water .element-body{background:radial-gradient(ellipse 70% 26% at 20% 0%, rgba(53,163,192,.05), transparent 70%),radial-gradient(ellipse 70% 26% at 80% 100%, rgba(53,163,192,.05), transparent 70%)}
+.el-fire .element-body{background:radial-gradient(ellipse 75% 55% at 50% 115%, rgba(232,114,42,.07), transparent 70%)}
+.el-air .element-body{background:repeating-linear-gradient(90deg, rgba(185,174,224,.035) 0 1px, transparent 1px 72px)}
+/* ---------- Cards gallery ---------- */
+.cards-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:44px}
+figure.card{
+  background:var(--panel);border:1px solid var(--gold-frame);border-radius:10px;
+  padding:10px;box-shadow:0 18px 40px rgba(0,0,0,.55);
+  transition:transform .25s,border-color .25s;
+}
+figure.card:hover{transform:translateY(-4px);border-color:var(--gold)}
+figure.card img{width:100%;height:auto;display:block;border-radius:4px;aspect-ratio:4/5;object-fit:cover}
+figure.card figcaption{padding:14px 6px 8px;text-align:center}
+figure.poster{max-width:640px;margin:52px auto 0;background:var(--panel);border:1px solid var(--gold-frame);border-radius:10px;padding:18px}
+figure.poster img{width:100%;height:auto;display:block;border-radius:4px}
+figure.poster figcaption{padding:14px 6px 6px;text-align:center}
+figure.poster .cap-name{font-family:'Cinzel',serif;font-weight:600;letter-spacing:.1em;font-size:.9rem;color:var(--parchment);display:block}
+figure.poster .cap-el{font-family:'Cinzel',serif;font-weight:600;letter-spacing:.22em;font-size:.6rem;text-transform:uppercase;color:var(--gold);display:block;margin-top:5px}
+figure.card .cap-name{font-family:'Cinzel',serif;font-weight:600;letter-spacing:.1em;font-size:.85rem;color:var(--parchment);display:block}
+figure.card .cap-el{font-family:'Cinzel',serif;font-weight:600;letter-spacing:.22em;font-size:.6rem;text-transform:uppercase;color:var(--gold);display:block;margin-top:5px}
+/* ---------- World & Conflict ---------- */
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px}
+.force-panel{background:var(--panel);border:1px solid var(--hairline);border-radius:10px;padding:30px}
+.force-panel h3{margin-bottom:12px}
+.force-panel.blue h3{color:var(--blue-pale)}
+.force-panel.gold h3{color:var(--gold-hi)}
+.force-panel.red h3{color:#E88}
+.asmodel{
+  margin-top:44px;background:var(--entropy);border:1px solid #241545;border-radius:12px;
+  padding:44px 40px;text-align:center;box-shadow:0 0 60px rgba(122,63,242,.14) inset;
+}
+.asmodel h3{color:var(--parchment);font-size:1.8rem;letter-spacing:.08em}
+.asmodel .tenet{font-style:italic;color:var(--ash);margin-top:14px}
+.asmodel p{max-width:760px;margin:16px auto 0;color:#CFC9BA}
+.eclipse{margin:0 auto 10px;width:74px;height:74px}
+.diptych{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px}
+.order{border-radius:12px;padding:36px;border:1px solid var(--hairline)}
+.order.blue-flame{background:linear-gradient(160deg,#0A1A3A,#0D1428)}
+.order.midnight{background:linear-gradient(180deg,#030408 55%, #160B2E)}
+.order h3{margin-bottom:12px}
+.order.blue-flame h3{color:var(--blue-pale)}
+.order.midnight h3{color:var(--air)}
+.order .horizon{height:1px;background:var(--red);margin-top:22px;opacity:.8}
+.david{
+  margin-top:24px;border:1px solid var(--hairline);border-left:3px solid var(--magenta);
+  background:var(--panel);border-radius:10px;padding:26px 30px;
+}
+.david h3{color:var(--parchment);font-size:1.05rem;letter-spacing:.12em}
+.david p{margin-top:8px;color:#D8D2C2}
+/* ---------- Origin & Closing ---------- */
+.origin{background:var(--panel);border:1px solid var(--hairline);border-radius:12px;padding:48px 44px;max-width:900px;margin:44px auto 0}
+.origin p+p{margin-top:16px}
+.origin .congrats{font-family:'Cinzel',serif;font-weight:600;letter-spacing:.1em;color:var(--gold-hi);margin-top:22px}
+.closing{text-align:center}
+.closing .formula{font-style:italic;font-size:1.35rem;line-height:1.6}
+.closing .formula strong{color:var(--gold-hi);font-weight:500}
+.closing p{max-width:720px;margin:20px auto 0}
+.closing .btn{margin-top:32px}
+/* ---------- Footer ---------- */
+footer{margin-top:96px;border-top:1px solid var(--gold-frame);background:var(--void);padding:40px 24px 48px;text-align:center}
+footer .f-line{font-family:'Cinzel',serif;font-weight:600;letter-spacing:.12em;font-size:.8rem;color:var(--parchment);margin-top:16px}
+footer .f-sub{color:var(--ash);font-size:.85rem;margin-top:8px;font-style:italic}
+/* ---------- Responsive ---------- */
+@media (max-width:900px){
+  .cards-grid{grid-template-columns:repeat(2,1fr)}
+  .three-col{grid-template-columns:1fr}
+  .pairs{grid-template-columns:repeat(2,1fr)}
+  nav{display:none}
+  header .btn{margin-left:auto}
+}
+@media (max-width:600px){
+  section{padding:64px 0 8px}
+  .cards-grid{grid-template-columns:1fr}
+  .pairs{grid-template-columns:1fr}
+  .two-col,.diptych{grid-template-columns:1fr}
+  .hero{padding:80px 0 96px}
+  .hero .btn{width:100%}
+  .origin{padding:34px 24px}
+  .asmodel{padding:34px 22px}
+}
+
+/* Mobile game tab — Will 2026-11-10: dark Akasha/space ground, words easy to read */
+body{background:#05070F radial-gradient(1px 1px at 12% 22%, rgba(255,255,255,.5), transparent 60%),radial-gradient(1px 1px at 68% 12%, rgba(255,255,255,.35), transparent 60%),radial-gradient(1.5px 1.5px at 84% 38%, rgba(160,190,255,.5), transparent 60%),radial-gradient(1px 1px at 34% 64%, rgba(255,255,255,.4), transparent 60%),radial-gradient(1px 1px at 52% 84%, rgba(255,255,255,.3), transparent 60%),radial-gradient(2px 2px at 90% 78%, rgba(232,179,75,.45), transparent 60%)}
+.read-panel{background:rgba(8,11,22,.92);border:1px solid rgba(120,150,220,.28);border-radius:14px;padding:28px 30px;margin:0 auto 26px;max-width:880px}
+.read-panel h3{color:var(--gold-hi);margin:0 0 12px;font-size:1.35rem;letter-spacing:.04em}
+.read-panel p,.read-panel li{color:#EDF1FA;font-size:1.08rem;line-height:1.8}
+.read-panel ul{margin:6px 0 6px 22px}
+.tier-super{color:#7FD08A}.tier-normal{color:#EDF1FA}.tier-weak{color:#E88B7D}
+nav a.active{color:var(--gold-hi);border-bottom:2px solid var(--gold-hi)}
+</style>
+</head>
+<body id="top">
+<header>
+  <div class="header-in">
+    <a class="lockup" href="index.html" aria-label="Wings of Gnosis — home">WINGS OF GNOSIS</a>
+    <nav>
+      <a href="index.html#fall">The Fall</a>
+      <a href="index.html#way-of-virtue">The Way of Virtue</a>
+      <a href="index.html#world">The World</a>
+      <a href="index.html#conflict">The Conflict</a>
+      <a class="active" href="mobile-game.html">Mobile Game</a>
+    </nav>
+    <a class="btn" href="index.html#way-of-virtue">Explore the Way of Virtue</a>
+  </div>
+</header>
+<section class="hero" style="background-image:url('assets/archangel-attention.jpg')">
+  <p class="eyebrow">Wings of Gnosis</p>
+  <h1>THE MOBILE GAME</h1>
+  <p class="lede">The Way of Virtue, in your pocket. Build a deck of angels. Walk a living world. Face the demons that unfulfilled desires leave behind — and cleanse them with the virtues that answer them.</p>
+  <p><span class="status-chip">Mobile Game &middot; In Development</span></p>
+</section>
+<section>
+  <div class="read-panel">
+    <h3>Three games in one</h3>
+    <p><strong>Card duels.</strong> Battles are fought with cards, in real time. Every angel and every demon is a card with its own powers, and stronger cards can break weaker ones mid-play — so the deck you build decides the fight before it starts.</p>
+    <p><strong>A world you walk.</strong> Between battles you travel on foot through the regions of the world, the way classic adventure games let you roam — towns, wilds, and the places the distortions have taken hold.</p>
+    <p><strong>The swarm.</strong> Demons are born from unfulfilled human desires, and sometimes they come in waves. Survive the swarm, cleanse what you can, and carry the Sha back up.</p>
+  </div>
+  <div class="read-panel">
+    <h3>Every virtue. Every distortion.</h3>
+    <p>All 28 pairs of the Way of Virtue take the field — 28 angels and 28 demons, each with their own set of abilities, drawn as pixel warriors in the abstract style of Wings of Gnosis. Your virtue and its distortion were made to counter each other. They are not the only matchups that matter.</p>
+  </div>
+  <div class="read-panel">
+    <h3>The counter web</h3>
+    <p>Damage comes in three kinds:</p>
+    <ul>
+      <li><span class="tier-super"><strong>Super damage</strong></span> — the virtue that counters a distortion strikes it where it lives. Bring Awareness against Fear. Bring Gratitude against Greed.</li>
+      <li><span class="tier-normal"><strong>Normal damage</strong></span> — a virtue with nothing to do with that distortion still fights at full strength. It just gets no edge.</li>
+      <li><span class="tier-weak"><strong>Ineffective damage</strong></span> — the wrong power, thrown into the element that defeats it. Elements rule here: every power carries an element, and elements have strengths and weaknesses of their own.</li>
+    </ul>
+    <p>So a fight is won twice: once when you choose which virtues to carry, and once when you play them.</p>
+  </div>
+  <div class="read-panel">
+    <h3>Two layers of elements</h3>
+    <p>The four roots govern the first layer — <strong>Water, Earth, Fire, Air</strong> — each strong against one element and weak against another, balanced as a whole. Above them sits a second layer of sub-elements, balanced in its own right: <strong>Ice</strong> for Water, <strong>Metal</strong> for Earth, <strong>Lightning</strong> for Fire, and <strong>Sound</strong> for Air.</p>
+    <p>The main Wings of Gnosis game keeps its own art and its own road. The mobile game speaks pixel — a smaller, sharper telling of the same Way.</p>
+  </div>
+</section>
+<section class="closing">
+  <p class="f-line">Focus transmits Blessings.</p>
+  <p class="f-line">Gratitude crystallizes Bliss into Willpower.</p>
+  <p class="f-sub">Wings of Gnosis — The Mobile Game &middot; Mobile game &middot; In development</p>
+</section>
+<footer>
+  <p>A game by William Howard &middot; A Follow Your Will project.</p>
+</footer>
+</body>
+</html>
